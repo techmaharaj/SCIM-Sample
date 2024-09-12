@@ -34,9 +34,6 @@ class User(db.Model, Serializer):
         d = Serializer.serialize(self)
         return d
 
-def authenticate():
-    return jsonify({"error": "Authentication required"}), 401, {'WWW-Authenticate': 'Basic realm="Login Required"'}
-
 def requires_token_auth(f):
     @wraps(f)
     def decorated(*args, **kwargs):
